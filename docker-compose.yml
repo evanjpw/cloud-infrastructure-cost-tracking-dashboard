@@ -30,6 +30,17 @@ services:
     networks:
       - costnet
 
+  frontend:
+    build:
+      context: ./frontend
+    container_name: cloud-cost-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - costnet
+
 volumes:
   db_data:
 
