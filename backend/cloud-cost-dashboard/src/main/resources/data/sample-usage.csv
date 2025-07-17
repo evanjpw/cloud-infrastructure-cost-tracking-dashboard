@@ -1,0 +1,9 @@
+teamName,service,usageAmount,usageDate
+Platform,EC2,120.5,2024-11-01
+Platform,S3,300.0,2024-11-02
+Analytics,RDS,85.2,2024-11-01
+Analytics,Lambda,42.0,2024-11-03
+Security,CloudWatch,60.0,2024-11-04
+DevOps,EKS,150.0,2024-11-02
+Platform,EC2,100.0,2024-11-03
+Analytics,S3,220.0,2024-11-04
