@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Cost Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #2e6c80; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+<h1>Cloud Infrastructure Cost Report</h1>
+
+<p><strong>Team:</strong> <span th:text="${teamName}">Platform</span></p>
+<p><strong>Date Range:</strong> 
+    <span th:text="${startDate}">2024-11-01</span> to 
+    <span th:text="${endDate}">2024-11-07</span>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Total Cost ($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="item : ${breakdowns}">
+            <td th:text="${item.service}">EC2</td>
+            <td th:text="${item.totalCost}">1023.45</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
