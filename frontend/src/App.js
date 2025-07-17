@@ -1,10 +1,10 @@
 import React from 'react';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   return (
     <div>
-      <h1>Cloud Infrastructure Cost Dashboard</h1>
-      <p>This is a placeholder frontend for viewing usage reports.</p>
+      <DashboardPage />
     </div>
   );
 }

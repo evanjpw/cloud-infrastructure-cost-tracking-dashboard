@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { fetchCostReport } from '../services/api';
+import CostBreakdownChart from '../components/CostBreakdownChart';
+import TeamUsageTable from '../components/TeamUsageTable';
+import TimeFilter from '../components/TimeFilter';
 
 const DashboardPage = () => {
+  const [costData, setCostData] = useState([]);
+
+  useEffect(() => {
+    // Simulate API call
+    fetchCostReport("Platform", "2024-11-01", "2024-11-07").then((data) => {
+      setCostData(data);
+    });
+  }, []);
+
   return (
     <div style={{ padding: '2rem' }}>
       <h2>Cloud Cost Dashboard</h2>
-
-      <div style={{ marginTop: '2rem' }}>
-        <h4>Filters</h4>
-        {/* Simulated time filter component */}
-        <div>
-          <label>Start Date:</label>
-          <input type="date" />
-          <label style={{ marginLeft: '1rem' }}>End Date:</label>
-          <input type="date" />
-        </div>
-      </div>
-
-      <div style={{ marginTop: '2rem' }}>
-        <h4>Cost Breakdown</h4>
-        {/* Simulated chart/table placeholder */}
-        <div style={{ border: '1px solid #ccc', padding: '1rem' }}>
-          <p>[Chart or table component goes here]</p>
-        </div>
-      </div>
+      <TimeFilter />
+      <CostBreakdownChart />
+      <TeamUsageTable />
+      <p style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
+        Loaded {costData.length} service entries from API.
+      </p>
     </div>
   );
 };
