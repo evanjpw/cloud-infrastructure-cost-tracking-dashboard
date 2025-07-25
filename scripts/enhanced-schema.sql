@@ -1,4 +1,6 @@
 -- Enhanced Cloud Cost Tracking Database Schema
+-- Supports multi-cloud (AWS, Azure, GCP) cost tracking with team allocation
+
 -- Drop existing tables if they exist
 DROP TABLE IF EXISTS cost_allocations;
 DROP TABLE IF EXISTS usage_records;
@@ -88,6 +90,58 @@ CREATE TABLE usage_records (
     INDEX idx_team_date (team_id, usage_date),
     INDEX idx_service_date (service_id, usage_date),
     INDEX idx_resource_id (resource_id)
+);
+
+-- Cost Allocations (for shared resources)
+CREATE TABLE cost_allocations (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    usage_record_id BIGINT NOT NULL,
+    team_id BIGINT NOT NULL,
+    allocation_type ENUM('direct', 'shared', 'overhead') DEFAULT 'direct',
+    allocated_cost DECIMAL(12, 6),
+    allocation_percentage DECIMAL(5, 2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usage_record_id) REFERENCES usage_records (id),
+    FOREIGN KEY (team_id) REFERENCES teams (id),
+    INDEX idx_allocation_team (team_id)
+);
+
+-- Budgets
+CREATE TABLE budgets (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    team_id BIGINT NOT NULL,
+    budget_name VARCHAR(255),
+    budget_type ENUM('monthly', 'quarterly', 'annual') DEFAULT 'monthly',
+    amount DECIMAL(12, 2),
+    currency VARCHAR(3) DEFAULT 'USD',
+    start_date DATE,
+    end_date DATE,
+    alert_threshold_percent INT DEFAULT 80,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (team_id) REFERENCES teams (id),
+    INDEX idx_budget_active (is_active),
+    INDEX idx_budget_dates (start_date, end_date)
+);
+
+-- Budget Alerts
+CREATE TABLE budget_alerts (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    budget_id BIGINT NOT NULL,
+    alert_type ENUM('threshold', 'forecast', 'anomaly') DEFAULT 'threshold',
+    alert_level ENUM('info', 'warning', 'critical') DEFAULT 'warning',
+    current_spend DECIMAL(12, 2),
+    budget_amount DECIMAL(12, 2),
+    percentage_used DECIMAL(5, 2),
+    message TEXT,
+    is_acknowledged BOOLEAN DEFAULT FALSE,
+    acknowledged_by VARCHAR(255),
+    acknowledged_at TIMESTAMP NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (budget_id) REFERENCES budgets (id),
+    INDEX idx_alert_created (created_at),
+    INDEX idx_alert_acknowledged (is_acknowledged)
 );
 
 -- Insert initial cloud providers
@@ -212,3 +266,49 @@ INSERT INTO services (provider_id, service_code, service_name, category) VALUES
 (3, 'Firestore', 'Firestore', 'Database'),
 (3, 'LoadBalancing', 'Cloud Load Balancing', 'Networking'),
 (3, 'GKE', 'GKE - Kubernetes', 'Containers');
+
+-- Create views for easier reporting
+CREATE VIEW v_daily_costs AS
+SELECT
+    ur.usage_date,
+    t.`name` AS team_name,
+    t.display_name AS team_display_name,
+    cp.`name` AS provider_name,
+    cp.display_name AS provider_display_name,
+    s.service_name,
+    s.category AS service_category,
+    a.environment,
+    ur.currency,
+    SUM(ur.total_cost) AS daily_cost
+FROM usage_records AS ur
+INNER JOIN teams AS t ON ur.team_id = t.id
+INNER JOIN services AS s ON ur.service_id = s.id
+INNER JOIN accounts AS a ON ur.account_id = a.id
+INNER JOIN cloud_providers AS cp ON s.provider_id = cp.id
+GROUP BY ur.usage_date, t.id, s.id, a.environment;
+
+CREATE VIEW v_monthly_team_costs AS
+SELECT
+    t.`name` AS team_name,
+    t.display_name AS team_display_name,
+    t.department,
+    ur.currency,
+    DATE_FORMAT(ur.usage_date, '%Y-%m') AS `month`,
+    SUM(ur.total_cost) AS monthly_cost
+FROM usage_records AS ur
+INNER JOIN teams AS t ON ur.team_id = t.id
+GROUP BY DATE_FORMAT(ur.usage_date, '%Y-%m'), t.id;
+
+CREATE VIEW v_service_costs AS
+SELECT
+    cp.display_name AS provider_name,
+    s.service_name,
+    s.category,
+    ur.currency,
+    DATE_FORMAT(ur.usage_date, '%Y-%m') AS `month`,
+    SUM(ur.total_cost) AS total_cost,
+    COUNT(DISTINCT ur.resource_id) AS resource_count
+FROM usage_records AS ur
+INNER JOIN services AS s ON ur.service_id = s.id
+INNER JOIN cloud_providers AS cp ON s.provider_id = cp.id
+GROUP BY DATE_FORMAT(ur.usage_date, '%Y-%m'), s.id;

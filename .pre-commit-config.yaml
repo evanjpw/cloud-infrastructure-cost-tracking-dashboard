@@ -1,0 +1,36 @@
+# See https://pre-commit.com for more information
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-xml
+      - id: mixed-line-ending
+
+  # Java formatting
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.12.0
+    hooks:
+      - id: pretty-format-java
+        args: [--aosp, --autofix]
+        files: \.java$
+
+  # JavaScript/React formatting
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        types_or: [javascript, jsx, json, css, scss, markdown]
+
+  # MySQL/SQL formatting
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 3.0.0
+    hooks:
+      - id: sqlfluff-fix
+        args: [--dialect, mysql]
+        files: \.sql$

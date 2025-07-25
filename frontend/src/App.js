@@ -1,11 +1,12 @@
-import React from 'react';
-import DashboardPage from './pages/DashboardPage';
+import React from "react";
+import Layout from "./components/Layout";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
   return (
-    <div>
+    <Layout>
       <DashboardPage />
-    </div>
+    </Layout>
   );
 }
 

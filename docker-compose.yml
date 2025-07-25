@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: mysql:8.0
@@ -9,6 +7,7 @@ services:
       MYSQL_DATABASE: cloud_costs
     volumes:
       - db_data:/var/lib/mysql
+      - ./scripts/enhanced-schema.sql:/docker-entrypoint-initdb.d/enhanced-schema.sql
       - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
     ports:
       - "3306:3306"
@@ -17,7 +16,7 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ./backend/cloud-cost-dashboard
     container_name: cloud-cost-backend
     depends_on:
       - db
