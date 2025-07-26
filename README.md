@@ -12,7 +12,7 @@ This began as a fork of [https://github.com/evanjpw/cloud-infrastructure-cost-tr
 
 This project is a _substantial rewrite_ of the original [cloud-infrastructure-cost-tracking-dashboard](https://github.com/evanjpw/cloud-infrastructure-cost-tracking-dashboard) by [KatavinaNguyen](https://github.com/KatavinaNguyen). I deeply appreciate their initial vision & foundation work that inspired this project.
 
-**What started as a fork has become a rebuild.** While I maintain the same core concept of a multi-cloud cost tracking simulator, most components has been rewritten, featuring:
+**What started as a fork has become a rebuild.** While I maintain the same core concept of a multi-cloud cost tracking simulator, most components have been rewritten, featuring:
 
 - Spring Boot backend with relational database
 - AWS Cost Explorer-inspired interface with responsive design
@@ -72,8 +72,8 @@ The system automatically generates **20,000+ realistic usage records** spanning 
 
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   React Frontend │    │  Spring Boot API │    │   MySQL 8.0     │
-│   (Port 3000)   │◄──►│   (Port 8080)   │◄──►│  (Port 3306)    │
+│  React Frontend │    │  Spring Boot API │    │   MySQL 8.0     │
+│   (Port 3000)   │◄──►│   (Port 8080)    │◄──►│  (Port 3306)    │
 │                 │    │                  │    │                 │
 │ • Material-UI   │    │ • JPA/Hibernate  │    │ • Relational    │
 │ • Responsive    │    │ • REST APIs      │    │ • Sample Data   │
