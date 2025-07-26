@@ -1,0 +1,33 @@
+# <type>(<scope>): <subject>
+#
+# <body>
+#
+# <footer>
+
+# --- COMMIT END ---
+# Type can be:
+#   feat     (new feature)
+#   fix      (bug fix)
+#   docs     (changes to documentation)
+#   style    (formatting, missing semi colons, etc; no code change)
+#   refactor (refactoring production code)
+#   test     (adding tests, refactoring test; no production code change)
+#   chore    (updating build tasks, package manager configs, etc; no production code change)
+#   perf     (performance improvements)
+#   build    (build system or external dependencies)
+#   ci       (continuous integration)
+#   revert   (reverts a previous commit)
+#
+# Scope is optional and can be anything specifying place of the commit change.
+# For example: frontend, backend, database, docker, docs, etc.
+#
+# Subject should be under 50 characters and describe what changed
+# Body should explain what and why vs. how (optional)
+# Footer should contain any BREAKING CHANGE or issue references (optional)
+#
+# Examples:
+# feat(auth): add OAuth2 integration for user authentication
+# fix(database): resolve connection timeout in MySQL queries
+# docs(readme): update installation instructions for Docker setup
+# style(frontend): format React components with prettier
+# refactor(api): extract common validation logic into utility functions

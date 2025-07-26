@@ -1,0 +1,25 @@
+{
+  "types": [
+    {"type": "feat", "section": "Features"},
+    {"type": "fix", "section": "Bug Fixes"},
+    {"type": "chore", "hidden": true},
+    {"type": "docs", "section": "Documentation"},
+    {"type": "style", "hidden": true},
+    {"type": "refactor", "section": "Code Refactoring"},
+    {"type": "perf", "section": "Performance Improvements"},
+    {"type": "test", "hidden": true},
+    {"type": "build", "section": "Build System"},
+    {"type": "ci", "hidden": true}
+  ],
+  "commitUrlFormat": "https://github.com/evanjpw/cloud-infrastructure-cost-tracking-dashboard/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/evanjpw/cloud-infrastructure-cost-tracking-dashboard/compare/{{previousTag}}...{{currentTag}}",
+  "issueUrlFormat": "https://github.com/evanjpw/cloud-infrastructure-cost-tracking-dashboard/issues/{{id}}",
+  "userUrlFormat": "https://github.com/{{user}}",
+  "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
+  "skip": {
+    "bump": false,
+    "changelog": false,
+    "commit": false,
+    "tag": false
+  }
+}

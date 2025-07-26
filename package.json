@@ -1,0 +1,35 @@
+{
+  "name": "cloud-infrastructure-cost-tracking-dashboard",
+  "version": "2.0.0",
+  "description": "Multi-cloud cost tracking simulation dashboard",
+  "private": true,
+  "scripts": {
+    "commit": "cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "version": "npm run changelog && git add CHANGELOG.md",
+    "release": "standard-version"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "commitizen": "^4.3.0",
+    "conventional-changelog-cli": "^3.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "standard-version": "^9.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evanjpw/cloud-infrastructure-cost-tracking-dashboard.git"
+  },
+  "author": "evanjpw",
+  "license": "MIT"
+}
