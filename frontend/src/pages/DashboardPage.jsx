@@ -7,6 +7,9 @@ import ServiceBreakdownChart from "../components/charts/ServiceBreakdownChart";
 import GranularitySelector from "../components/GranularitySelector";
 import DateRangePicker from "../components/DateRangePicker";
 import KPIDashboard from "../components/KPIDashboard";
+import MultiSelectFilter from "../components/MultiSelectFilter";
+import QuickSearch from "../components/QuickSearch";
+import SavedViews from "../components/SavedViews";
 import { colors, getCardStyle, getInputStyle } from "../styles/colors";
 import { textStyles } from "../styles/typography";
 import { 
@@ -17,8 +20,11 @@ import {
 
 const DashboardPage = () => {
   const [costData, setCostData] = useState([]);
+  const [filteredCostData, setFilteredCostData] = useState([]);
   const [teams, setTeams] = useState([]);
-  const [selectedTeam, setSelectedTeam] = useState("platform");
+  const [selectedTeams, setSelectedTeams] = useState(["platform"]);
+  const [selectedServices, setSelectedServices] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [startDate, setStartDate] = useState("2025-01-01");
   const [endDate, setEndDate] = useState("2025-01-31");
   const [granularity, setGranularity] = useState("daily");
@@ -51,17 +57,21 @@ const DashboardPage = () => {
     loadTeams();
   }, []);
 
-  // Load cost data when team or date range changes
+  // Load cost data when teams or date range changes
   useEffect(() => {
     const loadCostData = async () => {
       setLoading(true);
       setError(null);
 
       try {
+        // Load data for all selected teams
         console.log(
-          `Loading cost data for team: ${selectedTeam}, dates: ${startDate} to ${endDate}`,
+          `Loading cost data for teams: ${selectedTeams.join(", ")}, dates: ${startDate} to ${endDate}`,
         );
-        const data = await fetchCostReport(selectedTeam, startDate, endDate);
+        
+        // For now, load data for the first selected team (API doesn't support multi-team yet)
+        const primaryTeam = selectedTeams[0] || "platform";
+        const data = await fetchCostReport(primaryTeam, startDate, endDate);
         setCostData(data);
       } catch (err) {
         console.error("Failed to load cost data:", err);
@@ -72,21 +82,45 @@ const DashboardPage = () => {
       }
     };
 
-    if (selectedTeam && startDate && endDate) {
+    if (selectedTeams.length > 0 && startDate && endDate) {
       loadCostData();
     }
-  }, [selectedTeam, startDate, endDate]);
+  }, [selectedTeams, startDate, endDate]);
 
-  // Generate aggregated trend data when granularity or cost data changes
+  // Filter cost data based on selected services and search term
   useEffect(() => {
-    if (costData && costData.length > 0) {
-      const aggregated = aggregateDataByGranularity(costData, granularity, startDate, endDate);
+    let filtered = [...costData];
+
+    // Filter by selected services
+    if (selectedServices.length > 0) {
+      filtered = filtered.filter(item => 
+        selectedServices.includes(item.service || item.serviceName)
+      );
+    }
+
+    // Filter by search term
+    if (searchTerm.trim()) {
+      const search = searchTerm.toLowerCase();
+      filtered = filtered.filter(item => 
+        (item.service || item.serviceName || "").toLowerCase().includes(search) ||
+        (item.team || "").toLowerCase().includes(search) ||
+        (item.totalCost || 0).toString().includes(search)
+      );
+    }
+
+    setFilteredCostData(filtered);
+  }, [costData, selectedServices, searchTerm]);
+
+  // Generate aggregated trend data when granularity or filtered data changes
+  useEffect(() => {
+    if (filteredCostData && filteredCostData.length > 0) {
+      const aggregated = aggregateDataByGranularity(filteredCostData, granularity, startDate, endDate);
       const withChanges = calculatePeriodChanges(aggregated);
       setAggregatedTrendData(withChanges);
     } else {
       setAggregatedTrendData([]);
     }
-  }, [costData, granularity, startDate, endDate]);
+  }, [filteredCostData, granularity, startDate, endDate]);
 
   // Suggest optimal granularity when date range changes
   useEffect(() => {
@@ -96,9 +130,55 @@ const DashboardPage = () => {
     }
   }, [startDate, endDate, granularity]);
 
-  const handleTeamChange = (teamName) => {
-    console.log("Team changed to:", teamName);
-    setSelectedTeam(teamName);
+  // Generate filter options
+  const teamOptions = teams.map(team => ({
+    value: team.name,
+    label: team.displayName || team.name,
+    count: costData.filter(item => item.team === team.name).length
+  }));
+
+  const serviceOptions = [...new Set(costData.map(item => item.service || item.serviceName))]
+    .filter(Boolean)
+    .map(service => ({
+      value: service,
+      label: service,
+      count: costData.filter(item => (item.service || item.serviceName) === service).length
+    }))
+    .sort((a, b) => b.count - a.count);
+
+  // Generate search suggestions
+  const searchSuggestions = [
+    ...serviceOptions.map(service => ({
+      label: service.label,
+      category: "Service",
+      description: `${service.count} records`,
+      value: `$${costData.filter(item => (item.service || item.serviceName) === service.value)
+        .reduce((sum, item) => sum + (item.totalCost || 0), 0).toFixed(0)}`
+    })),
+    ...teamOptions.map(team => ({
+      label: team.label,
+      category: "Team", 
+      description: `${team.count} services`,
+      value: team.value
+    })),
+    // Add cost-based suggestions
+    { label: "High cost services (>$1000)", category: "Cost", description: "Services over $1000" },
+    { label: "Low cost services (<$100)", category: "Cost", description: "Services under $100" },
+  ];
+
+  const handleTeamsChange = (newSelectedTeams) => {
+    console.log("Teams changed to:", newSelectedTeams);
+    setSelectedTeams(newSelectedTeams);
+  };
+
+  const handleServicesChange = (newSelectedServices) => {
+    console.log("Services changed to:", newSelectedServices);
+    setSelectedServices(newSelectedServices);
+  };
+
+  const handleSearchChange = (newSearchTerm) => {
+    console.log("Search changed to:", newSearchTerm);
+    setSearchTerm(newSearchTerm);
   };
 
   const handleDateRangeChange = (newStartDate, newEndDate) => {
@@ -107,36 +187,99 @@ const DashboardPage = () => {
     setEndDate(newEndDate);
   };
 
+  const handleLoadSavedView = (filters) => {
+    console.log("Loading saved view:", filters);
+    setSelectedTeams(filters.selectedTeams || []);
+    setSelectedServices(filters.selectedServices || []);
+    setSearchTerm(filters.searchTerm || "");
+    setStartDate(filters.startDate || "2025-01-01");
+    setEndDate(filters.endDate || "2025-01-31");
+    setGranularity(filters.granularity || "daily");
+  };
+
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-      {/* Team Selection */}
+      {/* Advanced Filters Section */}
       <div
         style={{
           ...getCardStyle(),
-          padding: isMobile ? "0.75rem" : "1rem",
+          padding: isMobile ? "1rem" : "1.5rem",
           marginBottom: "2rem",
-          display: "flex",
-          alignItems: isMobile ? "flex-start" : "center",
-          flexDirection: isMobile ? "column" : "row",
-          gap: "1rem",
         }}
       >
-        <label style={textStyles.label(colors.text.primary)}>Team:</label>
-        <select
-          value={selectedTeam}
-          onChange={(e) => handleTeamChange(e.target.value)}
-          style={{
-            ...getInputStyle(),
-            minWidth: isMobile ? "100%" : "200px",
-            width: isMobile ? "100%" : "auto",
+        <h3 style={{ ...textStyles.cardTitle(colors.text.primary), marginBottom: "1.5rem" }}>
+          🔍 Filters & Search
+        </h3>
+        
+        <div style={{ 
+          display: "grid", 
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", 
+          gap: "1.5rem",
+          marginBottom: "1.5rem"
+        }}>
+          {/* Multi-Select Team Filter */}
+          <MultiSelectFilter
+            label="Teams"
+            options={teamOptions}
+            selected={selectedTeams}
+            onChange={handleTeamsChange}
+            placeholder="Select teams..."
+            icon="👥"
+            isMobile={isMobile}
+          />
+
+          {/* Multi-Select Service Filter */}
+          <MultiSelectFilter
+            label="Services"
+            options={serviceOptions}
+            selected={selectedServices}
+            onChange={handleServicesChange}
+            placeholder="Select services..."
+            icon="🔧"
+            isMobile={isMobile}
+          />
+        </div>
+
+        {/* Quick Search */}
+        <QuickSearch
+          placeholder="Search services, teams, or costs..."
+          onSearch={handleSearchChange}
+          suggestions={searchSuggestions}
+          isMobile={isMobile}
+        />
+
+        {/* Filter Summary */}
+        {(selectedTeams.length > 0 || selectedServices.length > 0 || searchTerm) && (
+          <div style={{ 
+            marginTop: "1rem", 
+            padding: "0.75rem",
+            backgroundColor: colors.primary[50],
+            borderRadius: "6px",
+            border: `1px solid ${colors.primary[200]}`
+          }}>
+            <p style={{ ...textStyles.caption(colors.primary[700]), margin: 0 }}>
+              <strong>Active Filters:</strong> 
+              {selectedTeams.length > 0 && ` Teams (${selectedTeams.length})`}
+              {selectedServices.length > 0 && ` Services (${selectedServices.length})`}
+              {searchTerm && ` Search: "${searchTerm}"`}
+              {` • Showing ${filteredCostData.length} of ${costData.length} records`}
+            </p>
+          </div>
+        )}
+
+        {/* Saved Views */}
+        <SavedViews
+          currentFilters={{
+            selectedTeams,
+            selectedServices,
+            searchTerm,
+            startDate,
+            endDate,
+            granularity,
           }}
-        >
-          {teams.map((team) => (
-            <option key={team.name} value={team.name}>
-              {team.displayName || team.name}
-            </option>
-          ))}
-        </select>
+          onLoadView={handleLoadSavedView}
+          isMobile={isMobile}
+        />
       </div>
 
       {/* Enhanced Date Range Picker */}
@@ -183,7 +326,7 @@ const DashboardPage = () => {
               margin: "0",
             }}
           >
-            🔄 Loading cost data for {selectedTeam} ({startDate} to {endDate}
+            🔄 Loading cost data for {selectedTeams.join(", ")} ({startDate} to {endDate}
             )...
           </p>
           <div
@@ -243,12 +386,12 @@ const DashboardPage = () => {
         <>
           {/* KPI Dashboard - Top Section */}
           <KPIDashboard
-            costData={costData}
+            costData={filteredCostData}
             aggregatedTrendData={aggregatedTrendData}
             granularity={granularity}
             startDate={startDate}
             endDate={endDate}
-            selectedTeam={selectedTeam}
+            selectedTeam={selectedTeams.join(", ")}
             isMobile={isMobile}
           />
 
@@ -261,7 +404,7 @@ const DashboardPage = () => {
           }}>
             {/* Service Breakdown Pie Chart */}
             <ServiceBreakdownChart 
-              data={costData} 
+              data={filteredCostData} 
               title="Cost Distribution by Service"
               height="350px"
             />
@@ -280,8 +423,8 @@ const DashboardPage = () => {
           </div>
 
           {/* Original table chart */}
-          <CostBreakdownChart data={costData} />
-          <TeamUsageTable data={costData} />
+          <CostBreakdownChart data={filteredCostData} />
+          <TeamUsageTable data={filteredCostData} />
 
           {/* Data Status */}
           <div
@@ -297,7 +440,7 @@ const DashboardPage = () => {
                 marginBottom: "0.5rem",
               }}
             >
-              <strong>📊 Data Summary:</strong> Showing {costData.length}{" "}
+              <strong>📊 Data Summary:</strong> Showing {filteredCostData.length} of {costData.length}{" "}
               services
               {costData.some((item) => item.note) ? (
                 <span style={{ color: colors.warning, marginLeft: "1rem" }}>
@@ -315,22 +458,22 @@ const DashboardPage = () => {
                 marginBottom: "0.5rem",
               }}
             >
-              <strong>🎯 Filter:</strong> Team "{selectedTeam}" | 📅 {startDate}{" "}
+              <strong>🎯 Filters:</strong> Teams ({selectedTeams.length}) | Services ({selectedServices.length}) | 📅 {startDate}{" "}
               to {endDate}
             </p>
             <p style={textStyles.caption(colors.text.secondary)}>
-              <strong>💰 Total Cost:</strong> $
-              {costData
+              <strong>💰 Filtered Total:</strong> $
+              {filteredCostData
                 .reduce((sum, item) => sum + (item.totalCost || 0), 0)
                 .toFixed(2)}
-              {costData.length > 0 && (
+              {filteredCostData.length > 0 && (
                 <span style={{ marginLeft: "1rem" }}>
                   <strong>📊 Avg per Service:</strong> $
                   {(
-                    costData.reduce(
+                    filteredCostData.reduce(
                       (sum, item) => sum + (item.totalCost || 0),
                       0,
-                    ) / costData.length
+                    ) / filteredCostData.length
                   ).toFixed(2)}
                 </span>
               )}

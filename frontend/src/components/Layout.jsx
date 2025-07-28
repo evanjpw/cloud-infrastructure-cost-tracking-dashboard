@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { colors } from "../styles/colors";
 import { textStyles } from "../styles/typography";
 
 const Layout = ({ children }) => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -22,12 +24,20 @@ const Layout = ({ children }) => {
   }, []);
 
   const navigationItems = [
-    { id: "dashboard", label: "Dashboard", icon: "📊", active: true },
-    { id: "costs", label: "Cost Analysis", icon: "💰", active: false },
-    { id: "budgets", label: "Budgets", icon: "🎯", active: false },
-    { id: "reports", label: "Reports", icon: "📄", active: false },
-    { id: "settings", label: "Settings", icon: "⚙️", active: false },
+    { id: "dashboard", label: "Dashboard", icon: "📊", path: "/dashboard" },
+    { id: "cost-analysis", label: "Cost Analysis", icon: "💰", path: "/cost-analysis" },
+    { id: "budgets", label: "Budgets", icon: "🎯", path: "/budgets" },
+    { id: "reports", label: "Reports", icon: "📄", path: "/reports" },
+    { id: "settings", label: "Settings", icon: "⚙️", path: "/settings" },
   ];
+
+  // Determine if a navigation item is active
+  const isActive = (path) => {
+    if (path === "/dashboard") {
+      return location.pathname === "/" || location.pathname === "/dashboard";
+    }
+    return location.pathname === path;
+  };
 
   const sidebarWidth = sidebarCollapsed ? "60px" : "240px";
 
@@ -92,45 +102,49 @@ const Layout = ({ children }) => {
 
         {/* Navigation */}
         <nav style={{ flex: 1, padding: "1rem 0" }}>
-          {navigationItems.map((item) => (
-            <div
-              key={item.id}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "0.75rem 1rem",
-                margin: "0.25rem 0.5rem",
-                borderRadius: "4px",
-                cursor: "pointer",
-                backgroundColor: item.active
-                  ? colors.sidebar.backgroundActive
-                  : "transparent",
-                transition: "background-color 0.2s ease",
-                ...textStyles.nav(colors.sidebar.text),
-              }}
-              onMouseEnter={(e) => {
-                if (!item.active) {
-                  e.target.style.backgroundColor =
-                    colors.sidebar.backgroundHover;
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!item.active) {
-                  e.target.style.backgroundColor = "transparent";
-                }
-              }}
-            >
-              <span
+          {navigationItems.map((item) => {
+            const itemActive = isActive(item.path);
+            return (
+              <Link
+                key={item.id}
+                to={item.path}
                 style={{
-                  fontSize: "1.1rem",
-                  marginRight: sidebarCollapsed ? "0" : "0.75rem",
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "0.75rem 1rem",
+                  margin: "0.25rem 0.5rem",
+                  borderRadius: "4px",
+                  textDecoration: "none",
+                  backgroundColor: itemActive
+                    ? colors.sidebar.backgroundActive
+                    : "transparent",
+                  transition: "background-color 0.2s ease",
+                  ...textStyles.nav(colors.sidebar.text),
+                }}
+                onMouseEnter={(e) => {
+                  if (!itemActive) {
+                    e.target.style.backgroundColor =
+                      colors.sidebar.backgroundHover;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!itemActive) {
+                    e.target.style.backgroundColor = "transparent";
+                  }
                 }}
               >
-                {item.icon}
-              </span>
-              {!sidebarCollapsed && <span>{item.label}</span>}
-            </div>
-          ))}
+                <span
+                  style={{
+                    fontSize: "1.1rem",
+                    marginRight: sidebarCollapsed ? "0" : "0.75rem",
+                  }}
+                >
+                  {item.icon}
+                </span>
+                {!sidebarCollapsed && <span>{item.label}</span>}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* User/Account Info */}
