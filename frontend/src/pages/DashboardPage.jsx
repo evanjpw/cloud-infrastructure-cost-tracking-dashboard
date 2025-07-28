@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 import { fetchCostReport, fetchTeams } from "../services/api";
 import CostBreakdownChart from "../components/CostBreakdownChart";
 import TeamUsageTable from "../components/TeamUsageTable";
-import TimeFilter from "../components/TimeFilter";
 import CostTrendChart from "../components/charts/CostTrendChart";
 import ServiceBreakdownChart from "../components/charts/ServiceBreakdownChart";
+import GranularitySelector from "../components/GranularitySelector";
+import DateRangePicker from "../components/DateRangePicker";
 import { colors, getCardStyle, getInputStyle } from "../styles/colors";
 import { textStyles } from "../styles/typography";
+import { 
+  aggregateDataByGranularity, 
+  calculatePeriodChanges,
+  suggestOptimalGranularity 
+} from "../utils/dataAggregation";
 
 const DashboardPage = () => {
   const [costData, setCostData] = useState([]);
@@ -14,6 +20,8 @@ const DashboardPage = () => {
   const [selectedTeam, setSelectedTeam] = useState("platform");
   const [startDate, setStartDate] = useState("2025-01-01");
   const [endDate, setEndDate] = useState("2025-01-31");
+  const [granularity, setGranularity] = useState("daily");
+  const [aggregatedTrendData, setAggregatedTrendData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -68,6 +76,25 @@ const DashboardPage = () => {
     }
   }, [selectedTeam, startDate, endDate]);
 
+  // Generate aggregated trend data when granularity or cost data changes
+  useEffect(() => {
+    if (costData && costData.length > 0) {
+      const aggregated = aggregateDataByGranularity(costData, granularity, startDate, endDate);
+      const withChanges = calculatePeriodChanges(aggregated);
+      setAggregatedTrendData(withChanges);
+    } else {
+      setAggregatedTrendData([]);
+    }
+  }, [costData, granularity, startDate, endDate]);
+
+  // Suggest optimal granularity when date range changes
+  useEffect(() => {
+    const suggested = suggestOptimalGranularity(startDate, endDate);
+    if (suggested !== granularity) {
+      console.log(`Suggested granularity: ${suggested} (current: ${granularity})`);
+    }
+  }, [startDate, endDate, granularity]);
+
   const handleTeamChange = (teamName) => {
     console.log("Team changed to:", teamName);
     setSelectedTeam(teamName);
@@ -111,12 +138,30 @@ const DashboardPage = () => {
         </select>
       </div>
 
-      {/* Date Range Filter */}
-      <TimeFilter
+      {/* Enhanced Date Range Picker */}
+      <DateRangePicker
         startDate={startDate}
         endDate={endDate}
         onDateRangeChange={handleDateRangeChange}
+        granularity={granularity}
+        isMobile={isMobile}
       />
+
+      {/* Granularity Controls */}
+      <div
+        style={{
+          ...getCardStyle(),
+          padding: isMobile ? "1rem" : "1.5rem",
+          marginBottom: "1.5rem",
+        }}
+      >
+        <GranularitySelector
+          selectedGranularity={granularity}
+          onGranularityChange={setGranularity}
+          dateRange={{ start: startDate, end: endDate }}
+          isMobile={isMobile}
+        />
+      </div>
 
       {/* Loading State */}
       {loading && (
@@ -209,17 +254,15 @@ const DashboardPage = () => {
               height="350px"
             />
             
-            {/* Cost Trend Line Chart (Mock data for now) */}
+            {/* Cost Trend Line Chart with Real Aggregated Data */}
             <CostTrendChart 
-              data={[
-                { date: "Jan 2025", totalCost: 2856.42 },
-                { date: "Feb 2025", totalCost: 3124.18 },
-                { date: "Mar 2025", totalCost: 2945.73 },
-                { date: "Apr 2025", totalCost: 3389.91 },
-                { date: "May 2025", totalCost: 3567.29 },
-                { date: "Jun 2025", totalCost: 3812.45 }
-              ]}
-              title="6-Month Cost Trend"
+              data={aggregatedTrendData.map(item => ({
+                date: item.displayDate,
+                totalCost: item.totalCost,
+                change: item.change,
+                changePercent: item.changePercent
+              }))}
+              title={`Cost Trend (${granularity.charAt(0).toUpperCase() + granularity.slice(1)})`}
               height="350px"
             />
           </div>
