@@ -60,6 +60,9 @@ The system automatically generates **20,000+ realistic usage records** spanning 
 - **Quick search bar** with intelligent suggestions across services, teams, and costs
 - **Saved views** feature with localStorage persistence for rapid filter switching
 - **Real-time filtering** that updates all visualizations instantly
+- **CSV export functionality** with multiple export options (raw data, trend data, summary)
+- **Group-by dimensions** supporting service, team, provider, region, environment, and resource type
+- **Cost type toggle** for actual, amortized, and blended cost views
 
 #### **Professional KPI Dashboard**
 - **6 key performance indicators** with status indicators and trend analysis:
@@ -82,13 +85,13 @@ The system automatically generates **20,000+ realistic usage records** spanning 
 - **Active navigation states** with proper page highlighting
 - **Professional page layouts** with consistent headers and descriptions
 
-### 🌐 Simulates Multi-Cloud Support
+### Simulates Multi-Cloud Support
 
 - **AWS**: EC2, S3, RDS, Lambda, VPC, CloudFront, EKS, etc.
 - **Azure**: Virtual Machines, Blob Storage, SQL Database, Functions, etc.
 - **GCP**: Compute Engine, Cloud Storage, Cloud SQL, Cloud Functions, etc.
 
-### 💰 Advanced Cost Modeling
+### Advanced Cost Modeling
 
 - **Realistic Pricing**: Service-specific hourly rates with regional variations
 - **Time-based Adjustments**: Business hours premiums and seasonal spikes
@@ -152,7 +155,7 @@ cloud_providers → services
 
 ## 🚀 Current Capabilities
 
-### ✅ Fully Implemented Features (Phase 1 Complete)
+### Fully Implemented Features (Phase 1 Complete)
 
 - **Professional Dashboard Interface** with AWS/Azure-inspired design
 - **Advanced Multi-Select Filtering** for teams and services with search
@@ -164,8 +167,11 @@ cloud_providers → services
 - **Responsive Design** that works seamlessly across desktop, tablet, and mobile
 - **Interactive Charts** with hover details, gradients, and smooth animations
 - **Data Aggregation** with daily/weekly/monthly granularity controls
+- **CSV Export System** with raw data, trend data, and summary export options
+- **Multi-Dimensional Grouping** by service, team, provider, region, environment, and resource type
+- **Cost Type Selection** supporting actual, amortized, and blended cost methodologies
 
-### 🔧 Backend Services
+### Backend Services
 
 - **Multi-cloud cost tracking** across AWS, Azure, and GCP
 - **Relational database schema** with proper foreign key constraints
@@ -175,7 +181,7 @@ cloud_providers → services
 - **Docker containerization** with persistent data storage and hot reload
 - **Comprehensive logging** and debugging capabilities
 
-### 📱 Frontend Dashboard (Fully Implemented)
+### Frontend Dashboard (Fully Implemented)
 
 - **Modern React 19.1.0 interface** with custom professional components
 - **Chart.js 4.4.0 integration** with gradients, animations, and responsive behavior
@@ -239,7 +245,7 @@ SELECT * FROM usage_records ORDER BY created_at DESC LIMIT 10;
 - **Frontend component testing** with Jest/React Testing Library
 - **End-to-end testing** with realistic data scenarios
 
-## 🚢 Deployment
+## Deployment
 
 ### Docker Compose (Development)
 

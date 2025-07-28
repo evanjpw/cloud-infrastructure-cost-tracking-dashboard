@@ -10,6 +10,9 @@ import KPIDashboard from "../components/KPIDashboard";
 import MultiSelectFilter from "../components/MultiSelectFilter";
 import QuickSearch from "../components/QuickSearch";
 import SavedViews from "../components/SavedViews";
+import ExportButton from "../components/ExportButton";
+import GroupBySelector from "../components/GroupBySelector";
+import CostTypeToggle from "../components/CostTypeToggle";
 import { colors, getCardStyle, getInputStyle } from "../styles/colors";
 import { textStyles } from "../styles/typography";
 import { 
@@ -28,6 +31,8 @@ const DashboardPage = () => {
   const [startDate, setStartDate] = useState("2025-01-01");
   const [endDate, setEndDate] = useState("2025-01-31");
   const [granularity, setGranularity] = useState("daily");
+  const [groupBy, setGroupBy] = useState("service");
+  const [costType, setCostType] = useState("actual");
   const [aggregatedTrendData, setAggregatedTrendData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -282,6 +287,80 @@ const DashboardPage = () => {
         />
       </div>
 
+      {/* Export Section */}
+      <div
+        style={{
+          ...getCardStyle(),
+          padding: isMobile ? "1rem" : "1.5rem",
+          marginBottom: "1.5rem",
+        }}
+      >
+        <h3 style={{ ...textStyles.cardTitle(colors.text.primary), marginBottom: "1rem" }}>
+          📤 Export Data
+        </h3>
+        
+        <div style={{ 
+          display: "flex", 
+          flexDirection: isMobile ? "column" : "row",
+          gap: "1rem",
+          alignItems: isMobile ? "stretch" : "center",
+          flexWrap: "wrap"
+        }}>
+          {/* Raw Data Export */}
+          <ExportButton
+            data={filteredCostData}
+            filename="cost-data-raw"
+            title="Export Raw Data"
+            icon="📊"
+            isMobile={isMobile}
+          />
+          
+          {/* Aggregated Trend Data Export */}
+          <ExportButton
+            data={aggregatedTrendData}
+            filename="cost-trends-aggregated"
+            title="Export Trend Data"
+            icon="📈"
+            isMobile={isMobile}
+          />
+          
+          {/* Summary Export */}
+          <ExportButton
+            data={[
+              {
+                exportTimestamp: new Date().toISOString(),
+                dateRange: `${startDate} to ${endDate}`,
+                selectedTeams: selectedTeams.join(", "),
+                selectedServices: selectedServices.join(", "),
+                searchTerm: searchTerm || "None",
+                granularity,
+                totalRecords: costData.length,
+                filteredRecords: filteredCostData.length,
+                totalCost: filteredCostData.reduce((sum, item) => sum + (item.totalCost || 0), 0).toFixed(2),
+                averageCostPerService: filteredCostData.length > 0 
+                  ? (filteredCostData.reduce((sum, item) => sum + (item.totalCost || 0), 0) / filteredCostData.length).toFixed(2)
+                  : "0.00",
+                topService: filteredCostData.length > 0 
+                  ? filteredCostData.reduce((max, item) => (item.totalCost || 0) > (max.totalCost || 0) ? item : max, filteredCostData[0])?.service || "N/A"
+                  : "N/A"
+              }
+            ]}
+            filename="cost-summary"
+            title="Export Summary"
+            icon="📋"
+            isMobile={isMobile}
+          />
+        </div>
+        
+        <p style={{ 
+          ...textStyles.caption(colors.text.secondary), 
+          marginTop: "1rem", 
+          marginBottom: 0 
+        }}>
+          <strong>📄 Export Options:</strong> Raw data includes all filtered records • Trend data shows aggregated {granularity} values • Summary provides key metrics and filter settings
+        </p>
+      </div>
+
       {/* Enhanced Date Range Picker */}
       <DateRangePicker
         startDate={startDate}
@@ -303,6 +382,37 @@ const DashboardPage = () => {
           selectedGranularity={granularity}
           onGranularityChange={setGranularity}
           dateRange={{ start: startDate, end: endDate }}
+          isMobile={isMobile}
+        />
+      </div>
+
+      {/* Group By Controls */}
+      <div
+        style={{
+          ...getCardStyle(),
+          padding: isMobile ? "1rem" : "1.5rem",
+          marginBottom: "1.5rem",
+        }}
+      >
+        <GroupBySelector
+          selectedGroupBy={groupBy}
+          onGroupByChange={setGroupBy}
+          data={filteredCostData}
+          isMobile={isMobile}
+        />
+      </div>
+
+      {/* Cost Type Toggle */}
+      <div
+        style={{
+          ...getCardStyle(),
+          padding: isMobile ? "1rem" : "1.5rem",
+          marginBottom: "1.5rem",
+        }}
+      >
+        <CostTypeToggle
+          selectedCostType={costType}
+          onCostTypeChange={setCostType}
           isMobile={isMobile}
         />
       </div>
