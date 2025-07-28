@@ -44,6 +44,10 @@ export const colors = {
   error: "#f44336",
   info: "#2196f3",
 
+  // Basic Colors
+  white: "#ffffff",
+  black: "#000000",
+
   // Background Colors
   background: {
     primary: "#ffffff",

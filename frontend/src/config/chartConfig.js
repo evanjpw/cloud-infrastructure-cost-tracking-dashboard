@@ -22,7 +22,7 @@ export const chartDefaults = {
     },
     tooltip: {
       backgroundColor: colors.gray[900],
-      titleColor: colors.white,
+      titleColor: "#ffffff",
       bodyColor: colors.gray[100],
       borderColor: colors.gray[700],
       borderWidth: 1,
@@ -52,13 +52,13 @@ export const chartColors = {
   // Primary palette - AWS/Azure inspired
   primary: [
     colors.primary[500], // Blue
-    colors.accent.orange, // Orange
-    colors.accent.green, // Green
-    colors.accent.purple, // Purple
-    colors.accent.teal, // Teal
-    colors.warning, // Yellow
+    colors.warning, // Orange
+    colors.success, // Green
+    "#9c27b0", // Purple
+    "#009688", // Teal
+    "#607d8b", // Blue gray
     colors.error, // Red
-    colors.accent.indigo, // Indigo
+    "#795548", // Brown
   ],
   // Gradients for more sophisticated charts
   gradients: {
@@ -147,8 +147,8 @@ export const chartOptions = {
       point: {
         radius: 3,
         hoverRadius: 5,
-        backgroundColor: colors.white,
-        hoverBackgroundColor: colors.white,
+        backgroundColor: "#ffffff",
+        hoverBackgroundColor: "#ffffff",
       },
     },
     scales: {
