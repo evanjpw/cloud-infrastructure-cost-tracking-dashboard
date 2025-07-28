@@ -3,6 +3,8 @@ import { fetchCostReport, fetchTeams } from "../services/api";
 import CostBreakdownChart from "../components/CostBreakdownChart";
 import TeamUsageTable from "../components/TeamUsageTable";
 import TimeFilter from "../components/TimeFilter";
+import CostTrendChart from "../components/charts/CostTrendChart";
+import ServiceBreakdownChart from "../components/charts/ServiceBreakdownChart";
 import { colors, getCardStyle, getInputStyle } from "../styles/colors";
 import { textStyles } from "../styles/typography";
 
@@ -193,6 +195,36 @@ const DashboardPage = () => {
       {/* Cost Data Display */}
       {!loading && !error && (
         <>
+          {/* Charts Row */}
+          <div style={{ 
+            display: "grid", 
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+            gap: "1.5rem",
+            marginBottom: "1.5rem"
+          }}>
+            {/* Service Breakdown Pie Chart */}
+            <ServiceBreakdownChart 
+              data={costData} 
+              title="Cost Distribution by Service"
+              height="350px"
+            />
+            
+            {/* Cost Trend Line Chart (Mock data for now) */}
+            <CostTrendChart 
+              data={[
+                { date: "Jan 2025", totalCost: 2856.42 },
+                { date: "Feb 2025", totalCost: 3124.18 },
+                { date: "Mar 2025", totalCost: 2945.73 },
+                { date: "Apr 2025", totalCost: 3389.91 },
+                { date: "May 2025", totalCost: 3567.29 },
+                { date: "Jun 2025", totalCost: 3812.45 }
+              ]}
+              title="6-Month Cost Trend"
+              height="350px"
+            />
+          </div>
+
+          {/* Original table chart */}
           <CostBreakdownChart data={costData} />
           <TeamUsageTable data={costData} />
 
