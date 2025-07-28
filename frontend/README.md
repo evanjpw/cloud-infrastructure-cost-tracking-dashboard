@@ -14,6 +14,7 @@ All Phase 1 & 2 objectives have been successfully implemented:
 - ✅ **Multi-Page Navigation** with React Router and 5 distinct pages
 - ✅ **Budget Management** with comprehensive tracking and alert systems
 - ✅ **Cost Optimization** with AI-powered recommendations and anomaly detection
+- ✅ **Reporting & Analytics** with custom report builder and executive dashboard
 
 ## 🚀 Key Features Implemented
 
@@ -56,7 +57,7 @@ All Phase 1 & 2 objectives have been successfully implemented:
   - **Dashboard** (`/dashboard`) - Main cost overview with full functionality
   - **Cost Optimization** (`/cost-analysis`) - AI-powered recommendations and anomaly detection
   - **Budgets** (`/budgets`) - Complete budget management with tracking and alerts
-  - **Reports** (`/reports`) - Report generation and exports (Phase 2.3)
+  - **Reports** (`/reports`) - Custom report builder, executive dashboard, and exports
   - **Settings** (`/settings`) - Configuration and user preferences
 - **Active navigation states** with proper page highlighting
 - **Professional page layouts** with consistent headers and descriptions
@@ -77,6 +78,15 @@ All Phase 1 & 2 objectives have been successfully implemented:
 - **Anomaly detection** using statistical analysis (2σ threshold) for spending spikes
 - **Interactive recommendation cards** with expandable details and implementation steps
 - **Optimization summary** with potential savings, ROI metrics, and implementation roadmap
+
+### Reporting & Analytics System
+- **Custom Report Builder** with 6 report types and advanced configuration
+- **Executive Dashboard** with high-level metrics and strategic insights
+- **Multi-format Export** supporting PDF, Excel, CSV, and JSON formats
+- **Report Viewer** with interactive display and sharing capabilities
+- **Report Scheduling** with daily, weekly, monthly, and quarterly options
+- **Tabbed Interface** for easy navigation between builder, dashboard, and viewer
+- **Fallback Data** ensures functionality even when backend is unavailable
 
 ## 🛠️ Technology Stack
 
@@ -122,6 +132,10 @@ src/
 │   │   ├── RecommendationCard.jsx # Interactive recommendation display
 │   │   ├── OptimizationSummary.jsx # Savings summary and ROI metrics
 │   │   └── AnomalyChart.jsx      # Anomaly detection visualization
+│   ├── reports/                  # Reporting components
+│   │   ├── ReportBuilder.jsx     # Custom report configuration interface
+│   │   ├── ExecutiveDashboard.jsx # High-level executive metrics
+│   │   └── ReportViewer.jsx      # Report display and download interface
 │   └── charts/                   # Chart.js integrations
 │       ├── CostTrendChart.jsx    # Line charts for cost trends
 │       ├── ServiceBreakdownChart.jsx # Pie charts for service costs
@@ -130,7 +144,7 @@ src/
 │   ├── DashboardPage.jsx         # Main dashboard (fully implemented)
 │   ├── CostAnalysisPage.jsx      # Cost optimization (fully implemented)
 │   ├── BudgetsPage.jsx           # Budget management (fully implemented)
-│   ├── ReportsPage.jsx           # Report generation (placeholder)
+│   ├── ReportsPage.jsx           # Report generation (fully implemented)
 │   └── SettingsPage.jsx          # Configuration (basic demo)
 ├── styles/                       # Professional styling system
 │   ├── colors.js                 # AWS/Azure-inspired color palette
@@ -141,7 +155,8 @@ src/
 ├── utils/                        # Business logic utilities
 │   ├── dataAggregation.js        # Time series data aggregation
 │   ├── kpiCalculations.js        # KPI metrics calculations
-│   └── optimizationEngine.js     # AI-powered cost optimization engine
+│   ├── optimizationEngine.js     # AI-powered cost optimization engine
+│   └── pdfGenerator.js           # Report generation utilities
 └── services/
     └── api.js                    # Backend API integration
 ```
@@ -239,6 +254,6 @@ docker-compose up --build
 ---
 
 **Built with React 19.1.0** | **Chart.js 4.4.0** | **React Router 7.7.1**  
-**Last Updated**: July 28, 2025 | **Version**: 2.2.0 (Phase 1 & 2 Complete)
+**Last Updated**: July 28, 2025 | **Version**: 2.3.0 (Phase 1 & 2 Complete - All Features)
 
 For more information about the overall project, see the [main README](../README.md) and [project roadmap](../docs/ROADMAP.md).
