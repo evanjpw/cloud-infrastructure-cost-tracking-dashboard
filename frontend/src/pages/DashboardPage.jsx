@@ -6,6 +6,7 @@ import CostTrendChart from "../components/charts/CostTrendChart";
 import ServiceBreakdownChart from "../components/charts/ServiceBreakdownChart";
 import GranularitySelector from "../components/GranularitySelector";
 import DateRangePicker from "../components/DateRangePicker";
+import KPIDashboard from "../components/KPIDashboard";
 import { colors, getCardStyle, getInputStyle } from "../styles/colors";
 import { textStyles } from "../styles/typography";
 import { 
@@ -240,6 +241,17 @@ const DashboardPage = () => {
       {/* Cost Data Display */}
       {!loading && !error && (
         <>
+          {/* KPI Dashboard - Top Section */}
+          <KPIDashboard
+            costData={costData}
+            aggregatedTrendData={aggregatedTrendData}
+            granularity={granularity}
+            startDate={startDate}
+            endDate={endDate}
+            selectedTeam={selectedTeam}
+            isMobile={isMobile}
+          />
+
           {/* Charts Row */}
           <div style={{ 
             display: "grid", 
