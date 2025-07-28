@@ -2,8 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloud-cost-backend
+  namespace: cloud-cost
+  labels:
+    app.kubernetes.io/name: cloud-cost-dashboard
+    app.kubernetes.io/component: backend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: backend
@@ -11,16 +15,53 @@ spec:
     metadata:
       labels:
         app: backend
+        app.kubernetes.io/name: cloud-cost-dashboard
+        app.kubernetes.io/component: backend
     spec:
       containers:
         - name: backend
           image: cloud-cost-backend:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+              name: http
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://cloud-cost-db:3306/cloud_costs
+              value: jdbc:mysql://cloud-cost-db.cloud-cost.svc.cluster.local:3306/cloud_costs
             - name: SPRING_DATASOURCE_USERNAME
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  name: cloud-cost-db-secret
+                  key: username
             - name: SPRING_DATASOURCE_PASSWORD
-              value: password123
+              valueFrom:
+                secretKeyRef:
+                  name: cloud-cost-db-secret
+                  key: password
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: "update"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3

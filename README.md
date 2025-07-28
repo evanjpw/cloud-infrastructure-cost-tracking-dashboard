@@ -257,12 +257,19 @@ docker-compose up --build
 ### Kubernetes (Production-ready)
 
 ```bash
-# Deploy to cluster
+# Quick deployment
+cd k8s/
+./deploy.sh
+
+# Manual deployment
 kubectl apply -f k8s/
 
-# Access via port-forward
-kubectl port-forward svc/frontend-service 3000:80
-kubectl port-forward svc/backend-service 8080:8080
+# Access the application
+# Add to /etc/hosts: <INGRESS_IP> cloud-cost.local
+# Visit: http://cloud-cost.local
+
+# Cleanup
+./undeploy.sh
 ```
 
 ### Configuration
