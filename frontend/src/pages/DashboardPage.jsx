@@ -552,15 +552,6 @@ const DashboardPage = () => {
             >
               <strong>📊 Data Summary:</strong> Showing {filteredCostData.length} of {costData.length}{" "}
               services
-              {costData.some((item) => item.note) ? (
-                <span style={{ color: colors.warning, marginLeft: "1rem" }}>
-                  ⚠️ Using fallback data (no data found for this date range)
-                </span>
-              ) : (
-                <span style={{ color: colors.success, marginLeft: "1rem" }}>
-                  ✅ Real data from database
-                </span>
-              )}
             </p>
             <p
               style={{

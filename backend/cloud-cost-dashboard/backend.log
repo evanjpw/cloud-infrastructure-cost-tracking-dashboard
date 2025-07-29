@@ -1,0 +1,358 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dashboard:cloud-cost-dashboard >-----------------
+[INFO] Building cloud-cost-dashboard 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.3:run (default-cli) > test-compile @ cloud-cost-dashboard >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ cloud-cost-dashboard ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ cloud-cost-dashboard ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 62 source files with javac [debug parameters release 17] to target/classes
+[INFO] /Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard/src/main/java/com/dashboard/service/impl/BudgetServiceImpl.java: /Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard/src/main/java/com/dashboard/service/impl/BudgetServiceImpl.java uses or overrides a deprecated API.
+[INFO] /Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard/src/main/java/com/dashboard/service/impl/BudgetServiceImpl.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard/src/main/java/com/dashboard/service/impl/ReportServiceImpl.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard/src/main/java/com/dashboard/service/impl/ReportServiceImpl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cloud-cost-dashboard ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ cloud-cost-dashboard ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.5.3:run (default-cli) < test-compile @ cloud-cost-dashboard <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.3:run (default-cli) @ cloud-cost-dashboard ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.3)
+
+2025-07-28T20:04:04.040-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] c.d.c.CloudCostDashboardApplication      : Starting CloudCostDashboardApplication using Java 17.0.15 with PID 9847 (/Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard/target/classes started by evan in /Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard)
+2025-07-28T20:04:04.041-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] c.d.c.CloudCostDashboardApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-07-28T20:04:04.056-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-28T20:04:04.056-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-28T20:04:04.265-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-28T20:04:04.285-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 5 JPA repository interfaces.
+2025-07-28T20:04:04.431-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-28T20:04:04.437-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-28T20:04:04.437-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-28T20:04:04.449-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-28T20:04:04.450-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 393 ms
+2025-07-28T20:04:04.498-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-28T20:04:04.517-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-28T20:04:04.527-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-28T20:04:04.608-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-28T20:04:04.616-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-28T20:04:04.762-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7687d1d6
+2025-07-28T20:04:04.762-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-28T20:04:04.787-04:00  WARN 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-28T20:04:04.787-04:00  WARN 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-28T20:04:04.792-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-28T20:04:05.090-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-28T20:04:05.132-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-28T20:04:05.225-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-07-28T20:04:05.419-04:00  WARN 9847 --- [cloud-cost-dashboard] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-28T20:04:05.530-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-28T20:04:05.540-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-28T20:04:05.544-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] c.d.c.CloudCostDashboardApplication      : Started CloudCostDashboardApplication in 1.629 seconds (process running for 1.76)
+Hibernate: select count(*) from usage_records ur1_0
+Sample data already exists. Skipping generation.
+2025-07-28T20:04:18.517-04:00  INFO 9847 --- [cloud-cost-dashboard] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-28T20:04:18.517-04:00  INFO 9847 --- [cloud-cost-dashboard] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-28T20:04:18.518-04:00  INFO 9847 --- [cloud-cost-dashboard] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+Generating cost predictions for method: linear
+Generating cost predictions using method: linear
+2025-07-28T20:17:26.857-04:00 ERROR 9847 --- [cloud-cost-dashboard] [nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [SELECT date, team_name, service_name, region, provider,
+       SUM(cost) as cost, SUM(usage_quantity) as usage_quantity
+FROM enhanced_usage_records
+WHERE date BETWEEN ? AND ?
+ AND team_name = ? GROUP BY date, team_name, service_name, region, provider ORDER BY date]] with root cause
+
+java.sql.SQLSyntaxErrorException: Table 'cloud_costs.enhanced_usage_records' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112) ~[mysql-connector-j-9.2.0.jar:9.2.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.2.0.jar:9.2.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:990) ~[mysql-connector-j-9.2.0.jar:9.2.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1058) ~[mysql-connector-j-9.2.0.jar:9.2.0]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52) ~[HikariCP-6.3.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java) ~[HikariCP-6.3.0.jar:na]
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:732) ~[spring-jdbc-6.2.8.jar:6.2.8]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:658) ~[spring-jdbc-6.2.8.jar:6.2.8]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:723) ~[spring-jdbc-6.2.8.jar:6.2.8]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:754) ~[spring-jdbc-6.2.8.jar:6.2.8]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:767) ~[spring-jdbc-6.2.8.jar:6.2.8]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:820) ~[spring-jdbc-6.2.8.jar:6.2.8]
+	at org.springframework.jdbc.core.JdbcTemplate.queryForList(JdbcTemplate.java:954) ~[spring-jdbc-6.2.8.jar:6.2.8]
+	at com.dashboard.service.impl.AnalyticsServiceImpl.fetchHistoricalData(AnalyticsServiceImpl.java:167) ~[classes/:na]
+	at com.dashboard.service.impl.AnalyticsServiceImpl.predictCosts(AnalyticsServiceImpl.java:32) ~[classes/:na]
+	at com.dashboard.cloud_cost_dashboard.controller.AnalyticsController.generatePredictions(AnalyticsController.java:22) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.8.jar:6.2.8]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.8.jar:6.2.8]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.8.jar:6.2.8]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.8.jar:6.2.8]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.8.jar:6.2.8]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.8.jar:6.2.8]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.8.jar:6.2.8]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.8.jar:6.2.8]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.8.jar:6.2.8]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.8.jar:6.2.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.42.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.8.jar:6.2.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.42.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.8.jar:6.2.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.8.jar:6.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.8.jar:6.2.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.8.jar:6.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.8.jar:6.2.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.8.jar:6.2.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1769) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.42.jar:10.1.42]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+Generating cost predictions for method: linear
+Generating cost predictions using method: linear
+Fetching all teams
+Received request for report: platform
+Received request for report: platform
+Generating cost report for: platform
+Generating cost report for: platform
+Calculating costs for team: platform, dates: 2025-01-01 to 2025-01-31
+Calculating costs for team: platform, dates: 2025-01-01 to 2025-01-31
+Hibernate: select t1_0.id,t1_0.cost_center,t1_0.created_at,t1_0.department,t1_0.display_name,t1_0.manager_email,t1_0.name,t1_0.updated_at from teams t1_0
+Hibernate: select ur1_0.id,ur1_0.account_id,ur1_0.created_at,ur1_0.currency,ur1_0.region,ur1_0.resource_id,ur1_0.resource_name,ur1_0.resource_type,ur1_0.service_id,ur1_0.team_id,ur1_0.total_cost,ur1_0.unit_price,ur1_0.usage_date,ur1_0.usage_hour,ur1_0.usage_quantity,ur1_0.usage_unit from usage_records ur1_0 left join teams t1_0 on t1_0.id=ur1_0.team_id where t1_0.name=? and ur1_0.usage_date between ? and ?
+Hibernate: select ur1_0.id,ur1_0.account_id,ur1_0.created_at,ur1_0.currency,ur1_0.region,ur1_0.resource_id,ur1_0.resource_name,ur1_0.resource_type,ur1_0.service_id,ur1_0.team_id,ur1_0.total_cost,ur1_0.unit_price,ur1_0.usage_date,ur1_0.usage_hour,ur1_0.usage_quantity,ur1_0.usage_unit from usage_records ur1_0 left join teams t1_0 on t1_0.id=ur1_0.team_id where t1_0.name=? and ur1_0.usage_date between ? and ?
+Found 5 teams
+Fetching all teams
+Hibernate: select t1_0.id,t1_0.cost_center,t1_0.created_at,t1_0.department,t1_0.display_name,t1_0.manager_email,t1_0.name,t1_0.updated_at from teams t1_0
+Found 5 teams
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select t1_0.id,t1_0.cost_center,t1_0.created_at,t1_0.department,t1_0.display_name,t1_0.manager_email,t1_0.name,t1_0.updated_at from teams t1_0 where t1_0.id=?
+Hibernate: select t1_0.id,t1_0.cost_center,t1_0.created_at,t1_0.department,t1_0.display_name,t1_0.manager_email,t1_0.name,t1_0.updated_at from teams t1_0 where t1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select a1_0.id,a1_0.account_id,a1_0.account_name,a1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,a1_0.created_at,a1_0.environment,a1_0.status,a1_0.updated_at from accounts a1_0 join cloud_providers cp1_0 on cp1_0.id=a1_0.provider_id where a1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Hibernate: select s1_0.id,s1_0.category,s1_0.provider_id,cp1_0.id,cp1_0.created_at,cp1_0.display_name,cp1_0.icon_url,cp1_0.name,s1_0.created_at,s1_0.icon_url,s1_0.service_code,s1_0.service_name from services s1_0 join cloud_providers cp1_0 on cp1_0.id=s1_0.provider_id where s1_0.id=?
+Found 1277 records for team: platform
+Found 1277 records for team: platform
+Generated 14 cost breakdowns from real data
+Generated 14 cost breakdowns from real data
+  - AWS Lambda: $6.273095
+  - AWS Lambda: $6.273095
+  - Azure Virtual Network: $166.347
+  - Azure Virtual Network: $166.347
+  - Azure Load Balancer: $175.685
+  - Google Cloud Load Balancing: $180.99
+  - Google Cloud Functions: $6.395637
+  - Elastic Load Balancing: $182.55
+  - Azure Load Balancer: $175.685
+  - Google Cloud Load Balancing: $180.99
+  - Google Cloud Functions: $6.395637
+  - Elastic Load Balancing: $182.55
+  - Google Kubernetes Engine: $763.14
+  - Amazon Elastic Compute Cloud: $36.38688
+  - Google Kubernetes Engine: $763.14
+  - Amazon Virtual Private Cloud: $160.983
+  - Amazon Elastic Compute Cloud: $36.38688
+  - Azure Functions: $6.761175
+  - Amazon Virtual Private Cloud: $160.983
+  - Amazon Elastic Kubernetes Service: $792.52
+  - Azure Functions: $6.761175
+  - Amazon Elastic Kubernetes Service: $792.52
+  - Google VPC Network: $179.38
+  - Google Compute Engine: $34.105
+  - Azure Virtual Machines: $37.86464
+  - Google VPC Network: $179.38
+  - Google Compute Engine: $34.105
+  - Azure Virtual Machines: $37.86464
+2025-07-28T20:31:47.713-04:00  INFO 9847 --- [cloud-cost-dashboard] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 69 class path changes (0 additions, 0 deletions, 69 modifications)
+2025-07-28T20:31:47.723-04:00  INFO 9847 --- [cloud-cost-dashboard] [       Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-28T20:31:47.729-04:00  INFO 9847 --- [cloud-cost-dashboard] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-28T20:31:47.732-04:00  INFO 9847 --- [cloud-cost-dashboard] [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-28T20:31:47.736-04:00  INFO 9847 --- [cloud-cost-dashboard] [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-28T20:31:47.740-04:00  INFO 9847 --- [cloud-cost-dashboard] [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.3)
+
+2025-07-28T20:31:47.789-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] c.d.c.CloudCostDashboardApplication      : Starting CloudCostDashboardApplication using Java 17.0.15 with PID 9847 (/Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard/target/classes started by evan in /Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard)
+2025-07-28T20:31:47.789-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] c.d.c.CloudCostDashboardApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-07-28T20:31:47.841-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-28T20:31:47.846-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2025-07-28T20:31:47.878-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-28T20:31:47.878-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-28T20:31:47.878-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-28T20:31:47.882-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-28T20:31:47.882-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 92 ms
+2025-07-28T20:31:47.895-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-28T20:31:47.896-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-28T20:31:47.899-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-28T20:31:47.899-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-07-28T20:31:47.915-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@34166d63
+2025-07-28T20:31:47.915-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-07-28T20:31:47.915-04:00  WARN 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-28T20:31:47.915-04:00  WARN 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-28T20:31:47.916-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-28T20:31:47.950-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-28T20:31:47.991-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-28T20:31:48.038-04:00  WARN 9847 --- [cloud-cost-dashboard] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-28T20:31:48.076-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-28T20:31:48.080-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-28T20:31:48.081-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] c.d.c.CloudCostDashboardApplication      : Started CloudCostDashboardApplication in 0.299 seconds (process running for 1664.206)
+Hibernate: select count(*) from usage_records ur1_0
+Sample data already exists. Skipping generation.
+2025-07-28T20:31:48.098-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-28T20:42:36.581-04:00  INFO 9847 --- [cloud-cost-dashboard] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 69 class path changes (0 additions, 0 deletions, 69 modifications)
+2025-07-28T20:42:36.583-04:00  INFO 9847 --- [cloud-cost-dashboard] [       Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-28T20:42:36.585-04:00  INFO 9847 --- [cloud-cost-dashboard] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-28T20:42:36.586-04:00  INFO 9847 --- [cloud-cost-dashboard] [       Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-28T20:42:36.587-04:00  INFO 9847 --- [cloud-cost-dashboard] [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-07-28T20:42:36.589-04:00  INFO 9847 --- [cloud-cost-dashboard] [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.3)
+
+2025-07-28T20:42:36.645-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] c.d.c.CloudCostDashboardApplication      : Starting CloudCostDashboardApplication using Java 17.0.15 with PID 9847 (/Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard/target/classes started by evan in /Users/evan/src/the_rest/cloud-infrastructure-cost-tracking-dashboard/backend/cloud-cost-dashboard)
+2025-07-28T20:42:36.645-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] c.d.c.CloudCostDashboardApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-07-28T20:42:36.702-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-28T20:42:36.713-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 5 JPA repository interfaces.
+2025-07-28T20:42:36.746-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-28T20:42:36.747-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-28T20:42:36.747-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-28T20:42:36.751-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-28T20:42:36.751-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 106 ms
+2025-07-28T20:42:36.766-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-28T20:42:36.767-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-28T20:42:36.771-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-28T20:42:36.771-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-07-28T20:42:36.792-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@773f0561
+2025-07-28T20:42:36.792-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-07-28T20:42:36.792-04:00  WARN 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-28T20:42:36.792-04:00  WARN 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-28T20:42:36.793-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-28T20:42:36.827-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-28T20:42:36.881-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-28T20:42:36.928-04:00  WARN 9847 --- [cloud-cost-dashboard] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-28T20:42:36.967-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-28T20:42:36.971-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-28T20:42:36.972-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] c.d.c.CloudCostDashboardApplication      : Started CloudCostDashboardApplication in 0.334 seconds (process running for 2313.09)
+Hibernate: select count(*) from usage_records ur1_0
+Sample data already exists. Skipping generation.
+2025-07-28T20:42:36.987-04:00  INFO 9847 --- [cloud-cost-dashboard] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-28T20:50:50.951-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@773f0561 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-07-28T20:51:11.511-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6de42744 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-07-28T20:51:27.781-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3fba47a9 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-07-28T20:51:30.277-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@76e048d3 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-07-28T20:51:36.222-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@5ec06ef3 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-07-28T20:51:46.944-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1dc049c0 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-07-28T20:51:49.637-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@34f8604c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-07-28T20:52:02.425-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@50da35cb (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-07-28T20:52:14.594-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3742642f (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-07-28T20:52:14.862-04:00  WARN 9847 --- [cloud-cost-dashboard] [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@413a9924 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.

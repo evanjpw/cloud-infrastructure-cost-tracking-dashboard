@@ -118,19 +118,6 @@ const SettingsPage = () => {
           <li>API key management</li>
           <li>Export format defaults</li>
         </ul>
-        <div
-          style={{
-            marginTop: "2rem",
-            padding: "1rem",
-            backgroundColor: colors.success + "20",
-            borderRadius: "6px",
-            border: `1px solid ${colors.success}`,
-          }}
-        >
-          <p style={{ ...textStyles.caption(colors.text.primary), margin: 0 }}>
-            🔐 <strong>Phase 3.1:</strong> Full authentication and user management coming in Q1 2026
-          </p>
-        </div>
       </div>
     </div>
   );
