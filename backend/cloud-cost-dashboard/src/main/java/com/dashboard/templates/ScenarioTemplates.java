@@ -402,7 +402,7 @@ public class ScenarioTemplates {
             "15-25%",
             "3-4 weeks",
             List.of("VPC advanced", "PrivateLink", "Network design"),
-            Map.of("endpoint_services", ["s3", "dynamodb", "ec2"], "nat_consolidation", "true")
+            Map.of("endpoint_services", List.of("s3", "dynamodb", "ec2"), "nat_consolidation", "true")
         ));
         
         // 31. Hybrid RI/Spot Strategy
@@ -552,7 +552,7 @@ public class ScenarioTemplates {
             "30-45%",
             "12-16 weeks",
             List.of("Multi-cloud architecture", "Cloud APIs", "Terraform", "Cost modeling"),
-            Map.of("primary_cloud", "AWS", "secondary_clouds", ["Azure", "GCP"], "workload_mobility", "containerized")
+            Map.of("primary_cloud", "AWS", "secondary_clouds", List.of("Azure", "GCP"), "workload_mobility", "containerized")
         ));
         
         // 42. Edge Computing Strategy
@@ -578,7 +578,7 @@ public class ScenarioTemplates {
             "35-50%",
             "16-20 weeks",
             List.of("FinOps practices", "ML/AI", "Data engineering", "Platform development"),
-            Map.of("ml_models", ["anomaly_detection", "forecasting", "recommendation"], "automation_level", "full")
+            Map.of("ml_models", List.of("anomaly_detection", "forecasting", "recommendation"), "automation_level", "full")
         ));
         
         // 44. Chaos Engineering Cost
@@ -591,7 +591,7 @@ public class ScenarioTemplates {
             "20-35%",
             "8-10 weeks",
             List.of("Chaos engineering", "Resilience patterns", "Cost modeling", "Automation"),
-            Map.of("failure_scenarios", ["az_failure", "region_failure"], "cost_threshold", "150%")
+            Map.of("failure_scenarios", List.of("az_failure", "region_failure"), "cost_threshold", "150%")
         ));
         
         // 45. Quantum-Ready Architecture
@@ -604,7 +604,7 @@ public class ScenarioTemplates {
             "15-25%",
             "12-16 weeks",
             List.of("Quantum computing", "Hybrid architectures", "Future-proofing"),
-            Map.of("quantum_services", ["Braket", "optimization"], "classical_quantum_split", "90_10")
+            Map.of("quantum_services", List.of("Braket", "optimization"), "classical_quantum_split", "90_10")
         ));
         
         // 46. Zero-Trust Cost Optimization
@@ -630,7 +630,7 @@ public class ScenarioTemplates {
             "40-60%",
             "16-20 weeks",
             List.of("AI/ML", "Real-time systems", "Automation", "Decision systems"),
-            Map.of("ml_models", ["reinforcement_learning", "prediction"], "decision_frequency", "hourly")
+            Map.of("ml_models", List.of("reinforcement_learning", "prediction"), "decision_frequency", "hourly")
         ));
         
         // 48. Sustainability Optimization
@@ -643,7 +643,7 @@ public class ScenarioTemplates {
             "20-30%",
             "8-12 weeks",
             List.of("Sustainability", "Carbon accounting", "Green computing"),
-            Map.of("carbon_reduction_target", "40%", "renewable_regions", ["us-west-2", "eu-north-1"])
+            Map.of("carbon_reduction_target", "40%", "renewable_regions", List.of("us-west-2", "eu-north-1"))
         ));
         
         // 49. Event-Driven Cost Architecture
